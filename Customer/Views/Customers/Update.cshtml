@@ -1,0 +1,40 @@
+﻿@model Customer.Models.Entities.Customers
+
+@{
+    ViewBag.Title = "update";
+}
+<h2>Update</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Customer Info</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustomerID, htmlAttributes: new { @class = "control-lebel col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CustomerID, new { htmlAttribute = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CustomerID, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustomerName, htmlAttributes: new { @class = "control-lebel col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CustomerName, new { htmlAttribute = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Update" class="btn btn-default" />
+                @ViewBag.Message
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Back To List", "Index")
+</div>
